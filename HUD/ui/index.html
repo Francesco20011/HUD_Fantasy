@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Server Logo -->
+    <div id="server-logo">
+      <img
+        id="server-logo-img"
+        src="https://media.discordapp.net/attachments/1050176456296255510/1397686278107172914/logof.gif?ex=6889e088&is=68888f08&hm=c80acd6df6a5104a7d8d967d70e162444cd44864d5417d44a6083ebce279f1b2&"
+        alt="Server logo"
+      />
+      <div class="magic-sparkles">
+        <span class="sparkle" style="--x: 22; --y: 11; --d: 2.1s;"></span>
+        <span class="sparkle" style="--x: 95; --y: 22; --d: 3.4s;"></span>
+        <span class="sparkle" style="--x: 44; --y: 110; --d: 2.8s;"></span>
+        <span class="sparkle" style="--x: 80; --y: 80; --d: 3.9s;"></span>
+        <span class="sparkle" style="--x: 100; --y: 60; --d: 2.5s;"></span>
+        <span class="sparkle" style="--x: 70; --y: 125; --d: 3.1s;"></span>
+        <span class="sparkle" style="--x: 28; --y: 95; --d: 3.8s;"></span>
+      </div>
+    </div>
+
+    <!-- Fantasy HUD -->
+    <div id="hud-fantasy">
+      <div class="minimap-icons">
+        <div class="hud-icon-wrapper">
+          <div class="hud-icon" id="icon-hunger" style="--percent: 100">
+            <img src="icons/hunger.png" alt="Hunger" />
+          </div>
+          <div class="icon-percent" id="hunger-value">100</div>
+        </div>
+        <div class="hud-icon-wrapper">
+          <div class="hud-icon" id="icon-thirst" style="--percent: 100">
+            <img src="icons/thirst.png" alt="Thirst" />
+          </div>
+          <div class="icon-percent" id="thirst-value">100</div>
+        </div>
+        <div class="hud-icon-wrapper">
+          <div class="hud-icon" id="icon-stamina" style="--percent: 100">
+            <img src="icons/stamina.png" alt="Stamina" />
+          </div>
+          <div class="icon-percent" id="stamina-value">100</div>
+        </div>
+        <!-- ICONA MICROFONO -->
+        <div class="hud-icon-wrapper">
+          <div class="hud-icon" id="icon-mic">
+            <img id="mic-img" src="icons/mic.png" alt="Mic" />
+          </div>
+        </div>
+        <div class="hud-icon-wrapper">
+          <div class="hud-icon" id="icon-stress" style="--percent: 0">
+            <img src="icons/stress.png" alt="Stress" />
+          </div>
+          <div class="icon-percent" id="stress-value">0</div>
+        </div>
+      </div>
+
+      <div id="bottombar-fantasy">
+        <div class="bar-container">
+          <div id="hpbar-frame">
+            <div id="hpbar-inner"></div>
+            <span id="hpbar-text">100</span>
+          </div>
+          <div id="armorbar-frame">
+            <div id="armorbar-inner"></div>
+            <span id="armorbar-text">50</span>
+          </div>
+        </div>
+        <div id="level-circle"><span id="id-value"></span></div>
+      </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script src="script.js"></script>
+
+    <!-- BARRE NERE CINEMA -->
+    <div id="cinema-overlay">
+      <div class="cinema-bars cinema-top"></div>
+      <div class="cinema-bars cinema-bottom"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,412 @@
+@font-face {
+  font-family: 'Cinzel';
+  src: url('https://fonts.gstatic.com/s/cinzel/v17/8vIU7ww63mVu7gtR-kw2m4E.woff2');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Cinzel', 'Segoe UI', Arial, sans-serif;
+  overflow: hidden;
+  background: transparent;
+  display: block;
+}
+
+/* SERVER LOGO */
+#server-logo {
+  position: absolute;
+  top: 25px;
+  right: 38px;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  overflow: visible;
+}
+
+#server-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  /* Solo AURA EPICA */
+  box-shadow:
+    0 0 32px 10px #a890fa,
+    0 0 70px 18px #b38aff44,
+    0 0 0 0 #fff;
+  animation: logoAuraEpic 2.6s infinite alternate;
+}
+
+@keyframes logoAuraEpic {
+  0% {
+    box-shadow:
+      0 0 32px 10px #a890fa,
+      0 0 70px 18px #b38aff44,
+      0 0 0 0 #fff;
+    filter: brightness(1.08) saturate(1.07);
+  }
+  50% {
+    box-shadow:
+      0 0 54px 22px #dacfff,
+      0 0 140px 35px #a464fa33,
+      0 0 22px 10px #fff8;
+    filter: brightness(1.14) saturate(1.18);
+  }
+  100% {
+    box-shadow:
+      0 0 32px 10px #a890fa,
+      0 0 70px 18px #b38aff44,
+      0 0 0 0 #fff;
+    filter: brightness(1.08) saturate(1.07);
+  }
+}
+
+#hud-fantasy { opacity: 1; transition: opacity 0.7s; }
+.hud-hidden #hud-fantasy { opacity: 0; pointer-events: none; }
+
+.hud-shake { animation: shake 0.2s; }
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px);}
+  50% { transform: translateX(4px);}
+  75% { transform: translateX(-2px);}
+  100% { transform: translateX(0);}
+}
+
+/* MODALITÀ CINEMA - Barre nere semplici */
+#cinema-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 999999 !important;
+  pointer-events: none;
+}
+
+.cinema-bars {
+  width: 100%;
+  height: 80px;
+  background: #000;
+  position: relative;
+  animation: cinemaSlideIn 0.5s ease-out;
+}
+
+@keyframes cinemaSlideIn {
+  from { 
+    height: 0px;
+  }
+  to { 
+    height: 80px;
+  }
+}
+
+.cinema-top {
+  top: 0;
+  /* Puoi aggiungere: */
+  position: absolute;
+  left: 0;
+}
+
+.cinema-bottom {
+  bottom: 0;
+  /* Puoi aggiungere: */
+  position: absolute;
+  left: 0;
+}
+
+/* FANTASY/MMORPG HUD BLOCK */
+#hud-fantasy {
+  position: absolute;
+  left: 48px;
+  bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 38px;
+  z-index: 200;
+}
+
+.minimap-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  position: absolute;
+  left: 8px;
+  bottom: -15px;
+  z-index: 210;
+}
+
+.hud-icon {
+  width: 42px;
+  height: 42px;
+  margin-bottom: -10px;
+  border-radius: 50%;
+  background: rgba(50, 30, 80, 0.85);
+  border: 2.5px solid #b799ff;
+  box-shadow: 0 0 10px #3c2355, 0 0 30px #28133b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.hud-icon::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(#6db3ff calc(var(--percent, 100) * 1%), transparent 0);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+          mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  pointer-events: none;
+}
+
+.hud-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.icon-percent {
+  position: absolute;
+  bottom: -18px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.75em;
+  color: #fffad0;
+  text-shadow: 0 0 4px #000;
+  font-weight: bold;
+  font-family: 'Cinzel', serif;
+}
+
+.bar-icon {
+  width: 20px; 
+  height: 20px;
+  margin-right: 0;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  filter: drop-shadow(0 0 2px #fff8);
+}
+.bar-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: -2px;
+}
+
+.icon-pulse {
+  animation: iconPulse 2.2s infinite alternate;
+  filter: drop-shadow(0 0 4px #ffb200);
+}
+
+@keyframes iconPulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.15); opacity: 0.4; }
+}
+
+/* FANTASY-BOTTOM-BAR */
+#bottombar-fantasy {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 2px;
+  margin-bottom: 2px;
+  margin-left: 300px;
+}
+
+#bottombar-fantasy .bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#level-circle {
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle, #48297c 60%, #d4a839 100%);
+  border-radius: 50%;
+  border: 4px solid #e9d69b;
+  box-shadow: 0 0 24px #efcfae, 0 0 40px #b6882a inset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.3em;
+  font-weight: bold;
+  color: #fff3ad;
+  text-shadow: 0 0 12px #2d1609, 0 0 22px #e2bb43;
+  margin-left: 12px;
+  order: 2;
+}
+
+#hpbar-frame,
+#armorbar-frame {
+  width: 260px;
+  height: 20px;
+  border-radius: 12px;
+  background: #1d0a11;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border: 2.5px solid #a92434;
+  box-shadow: 0 0 18px #a92434bb, 0 0 48px #380912;
+  display: flex;
+  align-items: center;
+}
+#armorbar-frame {
+  margin-top: 7px;
+  background: linear-gradient(90deg, #182640 70%, #132c47 100%);
+  border: 2.5px solid #3cb3fc;
+  box-shadow: 0 0 14px #64ccfa66, 0 0 30px #132c47;
+}
+
+#hpbar-inner,
+#armorbar-inner {
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  border-radius: 12px 0 0 12px;
+  z-index: 1;
+  transition: width 0.4s cubic-bezier(.68,-0.6,.32,1.6);
+}
+#hpbar-inner {
+  background: linear-gradient(90deg, #d21e3b 0%, #7d060f 80%);
+  box-shadow: 0 0 22px #fa3d68;
+}
+#armorbar-inner {
+  background: linear-gradient(90deg, #27a7e7 0%, #8cf4ff 100%);
+  box-shadow: 0 0 12px #88e6fc;
+}
+
+#hpbar-text,
+#armorbar-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -52%);
+  font-size: 1.05em;
+  font-weight: bold;
+  z-index: 2;
+  pointer-events: none;
+  font-family: 'Cinzel', serif;
+}
+
+#hpbar-text {
+  color: #fff4cc;
+  text-shadow: 0 0 5px #a92434, 0 0 8px #380912;
+}
+#armorbar-text {
+  color: #e2f8ff;
+  text-shadow: 0 0 5px #1786be, 0 0 8px #073055;
+}
+
+.low-hp #hpbar-inner {
+  box-shadow: 0 0 38px #fa3d68, 0 0 70px #fff5, 0 0 22px #ff4455;
+  animation: hp-glow 1s infinite alternate;
+}
+.low-armor #armorbar-inner {
+  box-shadow: 0 0 22px #70e0ff, 0 0 46px #7ee8ff, 0 0 12px #2fbedb;
+  animation: armor-glow 1.2s infinite alternate;
+}
+
+@keyframes hp-glow {
+  0% { box-shadow: 0 0 26px #fa3d68, 0 0 36px #fff2; }
+  100% { box-shadow: 0 0 48px #ff7d8c, 0 0 72px #fff8; }
+}
+@keyframes armor-glow {
+  0% { box-shadow: 0 0 12px #70e0ff, 0 0 18px #53b8f7; }
+  100% { box-shadow: 0 0 32px #7ee8ff, 0 0 36px #82b8ff; }
+}
+
+.hud-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.hud-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(50, 30, 80, 0.85);
+  border: 2.5px solid #b799ff;
+  box-shadow: 0 0 10px #3c2355, 0 0 30px #28133b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.hud-icon img {
+  width: 28px;
+  height: 28px;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.icon-percent {
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 2px #28133b;
+  margin-top: 1px;
+  letter-spacing: 0.5px;
+}
+
+.icon-pulse {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.minimap-values {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 2px;
+  font-size: 11px;
+  color: white;
+  margin-left: 4px;
+  gap: 2px;
+}
+
+/* MIC COLOR STYLES */
+#mic-img {
+  filter: grayscale(1) brightness(0.7);
+  transition: filter 0.2s, box-shadow 0.2s;
+}
+
+/* Bisbiglio (azzurro) */
+.mic-whisper #mic-img {
+  filter: drop-shadow(0 0 12px #00e4ff) brightness(1.5) sepia(1) hue-rotate(170deg) saturate(2);
+}
+/* Normale (verde) */
+.mic-normal #mic-img {
+  filter: drop-shadow(0 0 10px #38f000) brightness(1.7) sepia(1) hue-rotate(65deg) saturate(2);
+}
+/* Urlo (viola) */
+.mic-shout #mic-img {
+  filter: drop-shadow(0 0 18px #a460f7) brightness(2.2) sepia(1) hue-rotate(180deg) saturate(5);
+}
+
+/* Non attivo: rosso */
+.icon-mic-inactive #mic-img {
+  filter: drop-shadow(0 0 10px #ff3333) brightness(1.2) sepia(1) hue-rotate(-40deg) saturate(3);
+}
